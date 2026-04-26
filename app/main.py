@@ -1,7 +1,12 @@
 from fastapi import FastAPI
 from app.routes import sample_routes
+from dotenv import load_dotenv
+import os
 
-app = FastAPI()
+# Load environment variables
+load_dotenv()
+
+app = FastAPI(title=os.getenv("APP_NAME"))
 
 # Include routes
 app.include_router(sample_routes.router)
